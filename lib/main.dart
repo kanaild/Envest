@@ -203,7 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const SecondRoute()),
+                      MaterialPageRoute(builder: (context) => SignUp()),
                     );
                     //signup screen
                   },
@@ -215,8 +215,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 }
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({Key? key}) : super(key: key);
+class SignUp extends StatelessWidget {
+  SignUp({Key? key}) : super(key: key);
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailAddressController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPassworController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -224,16 +230,83 @@ class SecondRoute extends StatelessWidget {
     appBar: AppBar(
       title: const Text('Second Route'),
     ),
-    body: Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Text('Go back!'),
-      ),
-    ),
-  );
-}
+      body: ListView(
+          children: <Widget>[
+            Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(10),
+                child: const Text(
+                  'Get Started',
+                  style: TextStyle(
+                      color: Colors.pink,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30),
+                )),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: firstNameController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'First Name',
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: lastNameController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Last Name',
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: emailAddressController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email Address',
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: confirmPassworController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Confirm Password',
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                if(passwordController.text==confirmPassworController.text) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LogIn()),
+                  );
+                }
+                //LogIn Screen after hitting register button
+              },
+              child: const Text('Register',),
+            ),
+          ],
+      ));
+  }
 }
 
 class ThirdRoute extends StatelessWidget {
@@ -266,14 +339,26 @@ class LogIn extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Preferences'),
       ),
-      body: Center(
-        child: ElevatedButton(
+      body: ListView(
+          children: <Widget>[
+      Container(
+      alignment: Alignment.center,
+          padding: const EdgeInsets.all(10),
+          child: const Text(
+            'Envest',
+            style: TextStyle(
+                color: Colors.pink,
+                fontWeight: FontWeight.w500,
+                fontSize: 30),
+          )),
+    ]
+      ));
+    /*    child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: const Text('In the works'),
         ),
-      ),
-    );
+    */
   }
 }
