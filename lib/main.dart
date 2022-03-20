@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
       ),
       home: Scaffold(body: const MyHomePage(title: 'ESG Page'),
       )
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Text(
                   'Envest',
                   style: TextStyle(
-                      color: Colors.blue,
+                      color: Colors.pink,
                       fontWeight: FontWeight.w500,
                       fontSize: 30),
                 )),
@@ -184,13 +184,18 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Row(
               children: <Widget>[
-                const Text('Does not have account?'),
+                const Text("Don't have account?"),
                 TextButton(
                   child: const Text(
-                    'Sign in',
+                    'Sign up',
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SecondRoute()),
+                    );
                     //signup screen
                   },
                 )
@@ -200,4 +205,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ));
   }
+}
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text('Second Route'),
+    ),
+    body: Center(
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: const Text('Go back!'),
+      ),
+    ),
+  );
+}
 }
