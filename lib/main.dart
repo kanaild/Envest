@@ -184,6 +184,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LogIn()),
+                    );
                   },
                 )
             ),
@@ -247,6 +251,27 @@ class ThirdRoute extends StatelessWidget {
             Navigator.pop(context);
           },
           child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class LogIn extends StatelessWidget {
+  const LogIn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Preferences'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('In the works'),
         ),
       ),
     );
