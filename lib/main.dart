@@ -167,6 +167,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TextButton(
               onPressed: () {
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdRoute()),
+                );
                 //forgot password screen
               },
               child: const Text('Forgot Password',),
@@ -225,4 +230,25 @@ class SecondRoute extends StatelessWidget {
     ),
   );
 }
+}
+
+class ThirdRoute extends StatelessWidget {
+  const ThirdRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Third Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
 }
